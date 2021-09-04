@@ -72,9 +72,10 @@ export const Deck = () => {
   //   );
   // } 
   
-  
+      console.log(deck)
 //HARD DATA
   if (deck) {
+
     const filterDecks = hardData.decks.filter((deck) => deck.id === Number(deckId))
     const deck = filterDecks[0]
     const filterCards = hardData.cards.filter((card) => card.deckId === Number(deckId))

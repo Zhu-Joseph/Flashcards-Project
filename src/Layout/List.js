@@ -76,7 +76,7 @@ export const List = () => {
 
 // Hard Data
     if (decks) {
-      const list = hardData.decks.map((deck) => {
+      const list = decks.map((deck) => {
         return (
           <div key={deck.id} className="card col-md-10">
             <div className="card-body">
