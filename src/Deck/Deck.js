@@ -7,16 +7,16 @@ import hardData from "../data/db.json"
 export const Deck = () => {
   const { deckId } = useParams();
   const history = useHistory();
-  const [deck, setDeck] = useState({ cards: [] });
+  const [deck, setDeck] = useState([]);
 
   useEffect(() => {
     readDeck(deckId).then(setDeck);
   }, [deckId]);
 
-
 // SEARCHING FOR DECK DATA
   // if (deck) {
-  //   const list = deck.cards.map((card) => <Card key={card.id} card={card} />);
+    
+  //   const list = deck.map((card) => <Card key={card.id} card={card} />);
   //   return (
   //     <div className="container">
   //       <nav aria-label="breadcrumb">
@@ -72,14 +72,9 @@ export const Deck = () => {
   //   );
   // } 
   
-      console.log(deck)
 //HARD DATA
   if (deck) {
-
-    const filterDecks = hardData.decks.filter((deck) => deck.id === Number(deckId))
-    const deck = filterDecks[0]
-    const filterCards = hardData.cards.filter((card) => card.deckId === Number(deckId))
-    const list = filterCards.map((card) => <Card key={card.id} card = {card}/>)
+    const list = deck.map((card) => <Card key={card.id} card = {card}/>)
 
     return (
       <div className="container">
