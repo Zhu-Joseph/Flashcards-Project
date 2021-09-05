@@ -24,6 +24,7 @@ function CreateDeck() {
 
   const handleReset = (event) => {
     setFormData({ ...initialState });
+    history.goBack()
   };
 
   const handleSubmit = (event) => {
@@ -32,6 +33,7 @@ function CreateDeck() {
 
     createDeck(formData, abortController.signal)
       .then((data) => setFormData(data))
+      .then(history.push("/"))
       .catch(setError);
 
     return () => abortController.abort();

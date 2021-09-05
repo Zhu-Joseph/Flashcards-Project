@@ -77,7 +77,7 @@
    const options = {
      method: "POST",
      headers,
-     body: JSON.stringify(stripCards(deck)),
+     body: JSON.stringify({data: deck}),
      signal,
    };
    return await fetchJson(url, options);
