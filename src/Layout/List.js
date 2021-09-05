@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { deleteDeck, listDecks } from '../utils/api';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import ErrorMessage from './ErrorMessage';
 import hardData from "../data/db.json"
 
@@ -8,8 +8,9 @@ export const List = () => {
 
   const [decks, setDecks] = useState([]);
   const [error, setError] = useState(undefined);
-
+  const history = useHistory()
   const abortController = new AbortController();
+
   async function getData() {
     try {
       let data = await listDecks(abortController.signal);
@@ -110,6 +111,7 @@ export const List = () => {
                   if (result) {
                     deleteDeck(deck.id);
                     getData();
+                    history.go(0)
                   }
                 }}
               >
