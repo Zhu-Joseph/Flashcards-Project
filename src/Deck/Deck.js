@@ -94,16 +94,16 @@ export const Deck = () => {
           <h5 className="card-title">{deck.name}</h5>
           <p className="card-text">{deck.description}</p>
 
-          <Link to={`/decks/${deck.id}/edit`} className="btn btn-secondary m-2">
+          <Link to={`/decks/${deckId}/edit`} className="btn btn-secondary m-2">
             <span className="oi oi-pencil" /> Edit
           </Link>
 
-          <Link to={`/decks/${deck.id}/study`} className="btn btn-primary m-2">
+          <Link to={`/decks/${deckId}/study`} className="btn btn-primary m-2">
             <span className="oi oi-book" /> Study
           </Link>
 
           <Link
-            to={`/decks/${deck.id}/cards/new`}
+            to={`/decks/${deckId}/cards/new`}
             className="btn btn-secondary m-2"
           >
             <span className="oi oi-plus" /> Add Cards

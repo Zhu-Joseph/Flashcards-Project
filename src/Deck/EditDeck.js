@@ -7,7 +7,7 @@ import hardData from "../data/db.json"
 
 function EditDeck() {
   const { deckId } = useParams();
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState([]);
   const [error, setError] = useState(undefined);
 
   useEffect(() => {
@@ -37,132 +37,133 @@ function EditDeck() {
   };
 
 // SEARCHING FOR DECK DATA
-  // if (formData) {
-  //     return (
-  //     <div>
-  //       <nav aria-label="breadcrumb">
-  //         <ol className="breadcrumb">
-  //           <li className="breadcrumb-item">
-  //             <a href="/">
-  //               <span className="oi oi-home" /> Home
-  //             </a>
-  //           </li>
-  //           <li className="breadcrumb-item">
-  //             <Link to={`/decks/${deckId}`}>{formData.name}</Link>
-  //           </li>
-  //           <li className="breadcrumb-item active" aria-current="page">
-  //             Edit Deck
-  //           </li>
-  //         </ol>
-  //       </nav>
-  //       <h1>Edit Deck</h1>
-  //       <form onSubmit={handleSubmit}>
-  //         <div className="form-group">
-  //           <label htmlFor="name" className="form-label">
-  //             Name
-  //           </label>
-  //           <input
-  //             type="text"
-  //             className="form-control"
-  //             id="name"
-  //             name="name"
-  //             placeholder={formData.name}
-  //             onChange={handleChange}
-  //             value={formData.name}
-  //           />
-  //         </div>
-  //         <div className="form-group">
-  //           <label htmlFor="description" className="form-label">
-  //             Description
-  //           </label>
-  //           <textarea
-  //             className="form-control"
-  //             id="description"
-  //             name="description"
-  //             placeholder={formData.description}
-  //             onChange={handleChange}
-  //             value={formData.description}
-  //           />
-  //         </div>
-  //         <input
-  //           className="btn btn-secondary mr-2"
-  //           type="reset"
-  //           onClick={handleReset}
-  //           value="Reset"
-  //         ></input>
-  //         <button type="submit" className="btn btn-primary">
-  //           Submit
-  //         </button>
-  //       </form>
-  //     </div>      
-  //   );
-  // }
-
-
-//HARD DATA
   if (formData) {
-    const filterDecks = hardData.decks.filter((deck) => deck.id === Number(deckId))
-    const deck = filterDecks[0]
-
-    return (
-    <div>
-      <nav aria-label="breadcrumb">
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <a href="/">
-              <span className="oi oi-home" /> Home
-            </a>
-          </li>
-          <li className="breadcrumb-item">
-            <Link to={`/decks/${deckId}`}>{deck.name}</Link>
-          </li>
-          <li className="breadcrumb-item active" aria-current="page">
-            Edit Deck
-          </li>
-        </ol>
-      </nav>
-      <h1>Edit Deck</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name" className="form-label">
-            Name
-          </label>
+    console.log(formData)
+      return (
+      <div>
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="/">
+                <span className="oi oi-home" /> Home
+              </a>
+            </li>
+            <li className="breadcrumb-item">
+              <Link to={`/decks/${deckId}`}>{formData.name}</Link>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              Edit Deck
+            </li>
+          </ol>
+        </nav>
+        <h1>Edit Deck</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="name" className="form-label">
+              Name
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              name="name"
+              placeholder={formData.name}
+              onChange={handleChange}
+              value={formData.name}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="description" className="form-label">
+              Description
+            </label>
+            <textarea
+              className="form-control"
+              id="description"
+              name="description"
+              placeholder={formData.description}
+              onChange={handleChange}
+              value={formData.description}
+            />
+          </div>
           <input
-            type="text"
-            className="form-control"
-            id="name"
-            name="name"
-            placeholder={formData.name}
-            onChange={handleChange}
-            value={formData.name}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="description" className="form-label">
-            Description
-          </label>
-          <textarea
-            className="form-control"
-            id="description"
-            name="description"
-            placeholder={formData.description}
-            onChange={handleChange}
-            value={formData.description}
-          />
-        </div>
-        <input
-          className="btn btn-secondary mr-2"
-          type="reset"
-          onClick={handleReset}
-          value="Reset"
-        ></input>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
-    </div>      
+            className="btn btn-secondary mr-2"
+            type="reset"
+            onClick={handleReset}
+            value="Reset"
+          ></input>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>      
     );
   }
+
+  console.log(formData)
+//HARD DATA
+  // if (formData) {
+  //   const filterDecks = formData.filter((deck) => deck.id === Number(deckId))
+  //   const deck = filterDecks[0]
+
+  //   return (
+  //   <div>
+  //     <nav aria-label="breadcrumb">
+  //       <ol className="breadcrumb">
+  //         <li className="breadcrumb-item">
+  //           <a href="/">
+  //             <span className="oi oi-home" /> Home
+  //           </a>
+  //         </li>
+  //         <li className="breadcrumb-item">
+  //           <Link to={`/decks/${deckId}`}>{deck.name}</Link>
+  //         </li>
+  //         <li className="breadcrumb-item active" aria-current="page">
+  //           Edit Deck
+  //         </li>
+  //       </ol>
+  //     </nav>
+  //     <h1>Edit Deck</h1>
+  //     <form onSubmit={handleSubmit}>
+  //       <div className="form-group">
+  //         <label htmlFor="name" className="form-label">
+  //           Name
+  //         </label>
+  //         <input
+  //           type="text"
+  //           className="form-control"
+  //           id="name"
+  //           name="name"
+  //           placeholder={formData.name}
+  //           onChange={handleChange}
+  //           value={formData.name}
+  //         />
+  //       </div>
+  //       <div className="form-group">
+  //         <label htmlFor="description" className="form-label">
+  //           Description
+  //         </label>
+  //         <textarea
+  //           className="form-control"
+  //           id="description"
+  //           name="description"
+  //           placeholder={formData.description}
+  //           onChange={handleChange}
+  //           value={formData.description}
+  //         />
+  //       </div>
+  //       <input
+  //         className="btn btn-secondary mr-2"
+  //         type="reset"
+  //         onClick={handleReset}
+  //         value="Reset"
+  //       ></input>
+  //       <button type="submit" className="btn btn-primary">
+  //         Submit
+  //       </button>
+  //     </form>
+  //   </div>      
+  //   );
+  // }
 }
 
 
