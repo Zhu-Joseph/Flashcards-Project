@@ -107,11 +107,12 @@
   *  a promise that resolves to the updated deck.
   */
  export async function updateDeck(updatedDeck, signal) {
+   console.log(updatedDeck.name)
    const url = `${API_BASE_URL}/decks/${updatedDeck.id}?_embed=cards`;
    const options = {
      method: "PUT",
      headers,
-     body: JSON.stringify(stripCards(updatedDeck)),
+     body: JSON.stringify({data: updatedDeck}),
      signal,
    };
    return await fetchJson(url, options);
