@@ -164,10 +164,11 @@
    // and the card is not related to the deck because the data types of the ID's are different.
    const url = `${API_BASE_URL}/cards`;
    card.deckId = Number(deckId);
+   console.log(card)
    const options = {
      method: "POST",
      headers,
-     body: JSON.stringify(card),
+     body: JSON.stringify({data: card}),
      signal,
    };
    return await fetchJson(url, options);

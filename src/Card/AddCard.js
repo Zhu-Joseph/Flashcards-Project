@@ -3,7 +3,6 @@ import { createCard, readDeck } from '../utils/api';
 import ErrorMessage from '../Layout/ErrorMessage';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import CardForm from './CardForm';
-import hardData from "../data/db.json"
 
 function AddCard() {
   const initialState = {
@@ -15,9 +14,6 @@ function AddCard() {
   const [error, setError] = useState(undefined);
   const [deck, setDeck] = useState([]);
   const history = useHistory();
-
-  const filterDecks = hardData.decks.filter((deck) => deck.id === Number(deckId))
-  const currentDeck = filterDecks[0]
 
   useEffect(() => {
     readDeck(deckId).then(setDeck);
@@ -55,7 +51,7 @@ function AddCard() {
   if (error) {
     return <ErrorMessage error={error} />;
   }
-  
+  console.log(formData)
   return (
     <div>
       <nav aria-label="breadcrumb">
@@ -67,14 +63,14 @@ function AddCard() {
             </Link>
           </li>
           <li className="breadcrumb-item" aria-current="page">
-            <a href={`/decks/${deckId}`}>{currentDeck.name}</a>
+            <a href={`/decks/${deckId}`}>{deck.name}</a>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
             <span className="oi oi-plus" /> Add Card
           </li>
         </ol>
       </nav>
-      <h1>{currentDeck.name}: Add Card</h1>
+      <h1>{deck.name}: Add Card</h1>
       <CardForm
         formData={formData}
         handleChange={handleChange}
