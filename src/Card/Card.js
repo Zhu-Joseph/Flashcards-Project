@@ -14,7 +14,7 @@ export const Card = ({ card }) => {
       deleteCard(card.id).then(history.push('/'));
     }
   };
-
+console.log(card)
   return (
     <div className="container">
       <div className="card col-md-10">

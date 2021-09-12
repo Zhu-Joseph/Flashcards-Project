@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { updateCard, readCard, readDeck } from '../utils/api';
 import ErrorMessage from '../Layout/ErrorMessage';
 import CardForm from './CardForm';
-import hardData from "../data/db.json"
+// import hardData from "../data/db.json"
 
 function EditCard() {
   const { deckId, cardId } = useParams();
@@ -11,8 +11,8 @@ function EditCard() {
   const [error, setError] = useState(undefined);
   const [deck, setDeck] = useState({});
 
-  const filterDecks = hardData.decks.filter((deck) => deck.id === Number(deckId))
-  const currentDeck = filterDecks[0]
+  // const filterDecks = hardData.decks.filter((deck) => deck.id === Number(deckId))
+  // const currentDeck = filterDecks[0]
 
   useEffect(() => {
     readCard(cardId).then(setFormData);
@@ -40,7 +40,8 @@ function EditCard() {
       return <ErrorMessage error={error} />;
     }
   };
-
+  console.log(deck)
+  console.log(formData)
   if (formData && deck) {
     return (
       <div>
@@ -52,7 +53,7 @@ function EditCard() {
               </Link>
             </li>
             <li className="breadcrumb-item">
-              <Link to={`/decks/${deckId}`}>{currentDeck.name}</Link>
+              <Link to={`/decks/${deckId}`}>{deck.name}</Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               Edit Card {`${cardId}`}

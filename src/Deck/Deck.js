@@ -12,8 +12,6 @@ export const Deck = () => {
     readDeck(deckId).then(setDeck);
   }, [deckId]);
 
-  console.log(deck)
-
   if (deck) {
     
     let list = null
