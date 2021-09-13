@@ -15,7 +15,7 @@ function Layout() {
   return (
     <div style={{backgroundColor: "grey"}}>
       <Header />
-      {/* TODO: Implement the screen starting here */} 
+
       <div className="container">
         <Switch>
           <Route exact={true} path="/">

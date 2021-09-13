@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { readDeck } from '../utils/api';
 import ErrorMessage from '../Layout/ErrorMessage';
-import hardData from "../data/db.json"
 
 export const Study = () => {
   const { deckId } = useParams();
@@ -10,11 +9,6 @@ export const Study = () => {
   const [error, setError] = useState(undefined);
   const [flipped, setFlipped] = useState(false);
   const [cardIndex, setCardIndex] = useState(0);
-
-
-  const filterDecks = hardData.decks.filter((deck) => deck.id === Number(deckId))
-  const currentDeck = filterDecks[0]
-  const filterCards = hardData.cards.filter((card) => card.deckId === Number(deckId))
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -49,99 +43,37 @@ export const Study = () => {
   function flipCard() {
     setFlipped((prevState) => !prevState);
   }
-
-// SEARCHING FOR DECK DATA
-  // if (deck) {
-  //   return (
-  //     <div>
-  //       <nav aria-label="breadcrumb">
-  //         <ol className="breadcrumb">
-  //           <li className="breadcrumb-item">
-  //             <a href="/">
-  //               <span className="oi oi-home" /> Home
-  //             </a>
-  //           </li>
-  //           <li className="breadcrumb-item" aria-current="page">
-  //             <a href={`/decks/${deck.id}`}>{deck.name}</a>
-  //           </li>
-  //           <li className="breadcrumb-item active" aria-current="page">
-  //             Study
-  //           </li>
-  //         </ol>
-  //       </nav>
-  //       <h1>Study: {deck.name}</h1>
-  //       <div className="col-sm-12">
-  //         {deck.cards.length > 2 ? (
-  //           <div className="card">
-  //             <div className="card-body">
-  //               <h5 className="card-title">
-  //                 Card {cardIndex + 1} of {deck.cards.length}
-  //               </h5>
-  //               <p className="card-text">
-  //                 {!flipped
-  //                   ? `${deck.cards[cardIndex].front}`
-  //                   : `${deck.cards[cardIndex].back}`}
-  //               </p>
-  //               <button className="btn btn-secondary m-2" onClick={flipCard}>
-  //                 <span className="oi oi-action-redo" /> Flip
-  //               </button>
-  //               {flipped && (
-  //                 <button className="btn btn-primary" onClick={nextCard}>
-  //                   <span className="oi oi-arrow-thick-right" /> Next
-  //                 </button>
-  //               )}
-  //             </div>
-  //           </div>
-  //         ) : (
-  //           <div>
-  //             <h3>Not enough cards.</h3>
-  //             <p>
-  //               You need at least 3 cards to study. There are{' '}
-  //               {deck.cards.length} cards in this deck.
-  //             </p>
-  //             <Link
-  //               to={`/decks/${deck.id}/cards/new`}
-  //               className="btn btn-primary"
-  //             >
-  //               <span className="oi oi-plus" /> Add Cards
-  //             </Link>
-  //           </div>
-  //         )}
-  //       </div>
-  //     </div>
-  //   );
-  // }
-
-// SEARCHING FOR DECK DATA
+  console.log(deck)
+  if (deck.cards) {
     return (
       <div>
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <Link to="/">
+              <a href="/">
                 <span className="oi oi-home" /> Home
-              </Link>
+              </a>
             </li>
             <li className="breadcrumb-item" aria-current="page">
-              <Link to={`/decks/${currentDeck.id}`}>{currentDeck.name}</Link>
+              <a href={`/decks/${deck.id}`}>{deck.name}</a>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               Study
             </li>
           </ol>
         </nav>
-        <h1>Study: {currentDeck.name}</h1>
+        <h1>Study: {deck.name}</h1>
         <div className="col-sm-12">
-          {filterCards.length > 2 ? (
+          {deck.cards.length > 2 ? (
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title">
-                  Card {cardIndex + 1} of {filterCards.length}
+                  Card {cardIndex + 1} of {deck.cards.length}
                 </h5>
                 <p className="card-text">
                   {!flipped
-                    ? `${filterCards[cardIndex].front}`
-                    : `${filterCards[cardIndex].back}`}
+                    ? `${deck.cards[cardIndex].front}`
+                    : `${deck.cards[cardIndex].back}`}
                 </p>
                 <button className="btn btn-secondary m-2" onClick={flipCard}>
                   <span className="oi oi-action-redo" /> Flip
@@ -158,7 +90,7 @@ export const Study = () => {
               <h3>Not enough cards.</h3>
               <p>
                 You need at least 3 cards to study. There are{' '}
-                {filterCards.length} cards in this deck.
+                {deck.cards.length} cards in this deck.
               </p>
               <Link
                 to={`/decks/${deck.id}/cards/new`}
@@ -170,6 +102,11 @@ export const Study = () => {
           )}
         </div>
       </div>
+    );
+  }
+
+    return (
+      <div>No Cards to Study</div>
     );
 };
 export default Study;

@@ -18,6 +18,7 @@ export const List = () => {
       setError(err);
     }
   }
+  
   useEffect(() => {
     getData();
     return () => abortController.abort();
@@ -27,99 +28,51 @@ export const List = () => {
     return <ErrorMessage error={error} />;
   }
 
-// Searching for Deck Data
-  // if (decks) {
-  //   const list = decks.map((deck) => {
-  //     return (
-  //       <div key={deck.id} className="card col-md-10">
-  //         <div className="card-body">
-  //           <div className="row">
-  //             <div className="col-md-8">
-  //               <h5 className="card-title">{deck.name}</h5>
-  //             </div>
-  //             <div className="col-md-4">
-  //               <p className="text-end">{`${deck.cards.length} cards`}</p>
-  //             </div>
-  //           </div>
-  //           <p className="card-text">{deck.description}</p>
-
-  //           <Link to={`/decks/${deck.id}`} className="btn btn-secondary mr-2">
-  //             <span className="oi oi-eye" /> View
-  //           </Link>
-
-  //           <Link
-  //             to={`/decks/${deck.id}/study`}
-  //             className="btn btn-primary mr-2"
-  //           >
-  //             <span className="oi oi-book" /> Study
-  //           </Link>
-
-  //           <button
-  //             className="btn btn-danger"
-  //             onClick={async () => {
-  //               const result = window.confirm(
-  //                 'Delete this deck? \nYou will not be able to recover it.'
-  //               );
-  //               if (result) {
-  //                 deleteDeck(deck.id);
-  //                 getData();
-  //               }
-  //             }}
-  //           >
-  //             <span className="oi oi-circle-x" /> Delete
-  //           </button>
-  //         </div>
-  //       </div>
-  //     );
-  //   });
-
-
-// Hard Data
-    if (decks) {
-      const list = decks.map((deck) => {
-        return (
-          <div key={deck.id} className="card col-md-10">
-            <div className="card-body">
-              <div className="row">
-                <div className="col-md-8">
-                  <h5 className="card-title">{deck.name}</h5>
-                </div>
-                {/* <div className="col-md-4">
-                  <p className="text-end">{`${deck.cards.length} cards`}</p>
-                </div> */}
+  if (decks) {
+    const list = decks.map((deck) => {
+      return (
+        <div key={deck.id} className="card col-md-10">
+          <div className="card-body">
+            <div className="row">
+              <div className="col-md-8">
+                <h5 className="card-title">{deck.name}</h5>
               </div>
-              <p className="card-text">{deck.description}</p>
-  
-              <Link to={`/decks/${deck.id}`} className="btn btn-secondary mr-2">
-                <span className="oi oi-eye" /> View
-              </Link>
-  
-              <Link
-                to={`/decks/${deck.id}/study`}
-                className="btn btn-primary mr-2"
-              >
-                <span className="oi oi-book" /> Study
-              </Link>
-  
-              <button
-                className="btn btn-danger"
-                onClick={async () => {
-                  const result = window.confirm(
-                    'Delete this deck? \nYou will not be able to recover it.'
-                  );
-                  if (result) {
-                    deleteDeck(deck.id);
-                    getData();
-                    history.go(0)
-                  }
-                }}
-              >
-                <span className="oi oi-circle-x" /> Delete
-              </button>
+              {/* <div className="col-md-4">
+                <p className="text-end">{`${deck.cards.length} cards`}</p>
+              </div> */}
             </div>
+            <p className="card-text">{deck.description}</p>
+
+            <Link to={`/decks/${deck.id}`} className="btn btn-secondary mr-2">
+              <span className="oi oi-eye" /> View
+            </Link>
+
+            <Link
+              to={`/decks/${deck.id}/study`}
+              className="btn btn-primary mr-2"
+            >
+              <span className="oi oi-book" /> Study
+            </Link>
+
+            <button
+              className="btn btn-danger"
+              onClick={async () => {
+                const result = window.confirm(
+                  'Delete this deck? \nYou will not be able to recover it.'
+                );
+                if (result) {
+                  deleteDeck(deck.id);
+                  getData();
+                  history.go(0)
+                }
+              }}
+            >
+              <span className="oi oi-circle-x" /> Delete
+            </button>
           </div>
-        );
-      });
+        </div>
+      );
+    });
 
     return (
       <main className="container">
@@ -132,6 +85,7 @@ export const List = () => {
       </main>
     );
   }
+
   return (
     <div className="p-4 border border-top-0">
       <p>Loading...</p>

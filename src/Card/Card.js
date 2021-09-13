@@ -24,7 +24,6 @@ export const Card = ({ card }) => {
               <p className="card-text">{card.front}</p>
             </div>
           </div>
-
           <div className="col-md-6">
             <div className="card-body">
               <p className="card-text">{card.back}</p>
@@ -35,7 +34,6 @@ export const Card = ({ card }) => {
                 >
                   <span className="oi oi-pencil" /> Edit
                 </Link>
-
                 <button className="btn btn-danger m-2" onClick={handleDelete}>
                   <span className="oi oi-circle-x" /> Delete
                 </button>
