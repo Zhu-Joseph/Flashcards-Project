@@ -197,11 +197,11 @@
   *  a promise that resolves to the updated card.
   */
  export async function updateCard(updatedCard, signal) {
-   const url = `${API_BASE_URL}/cards/${updatedCard.id}`;
+   const url = `${API_BASE_URL}/cards/${updatedCard.cardId}`;
    const options = {
      method: "PUT",
      headers,
-     body: JSON.stringify(updatedCard),
+     body: JSON.stringify({data: updatedCard}),
    };
    return await fetchJson(url, options);
  }

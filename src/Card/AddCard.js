@@ -37,6 +37,7 @@ function AddCard() {
 
     createCard(deckId, formData, abortController.signal)
       .then((data) => setFormData(data))
+      .then(history.goBack())
       .catch(setError);
 
     return () => abortController.abort();
@@ -51,7 +52,7 @@ function AddCard() {
   if (error) {
     return <ErrorMessage error={error} />;
   }
-  console.log(formData)
+
   return (
     <div>
       <nav aria-label="breadcrumb">

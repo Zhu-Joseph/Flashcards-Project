@@ -11,10 +11,10 @@ export const Card = ({ card }) => {
       'Delete this card? \nYou will not be able to recover it.'
     );
     if (result) {
-      deleteCard(card.id).then(history.push('/'));
+      deleteCard(card.cardId).then(history.push('/'));
     }
   };
-console.log(card)
+
   return (
     <div className="container">
       <div className="card col-md-10">
@@ -30,7 +30,7 @@ console.log(card)
               <p className="card-text">{card.back}</p>
               <div className="text-right">
                 <Link
-                  to={`/decks/${deckId}/cards/${card.id}/edit`}
+                  to={`/decks/${deckId}/cards/${card.cardId}/edit`}
                   className="btn btn-secondary m-2"
                 >
                   <span className="oi oi-pencil" /> Edit
