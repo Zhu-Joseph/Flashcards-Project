@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 class Doc extends React.Component{
   componentDidMount(){
-    document.title = "Flashcards"
+    document.title = "Simple Study"
   }
 
   render(){
