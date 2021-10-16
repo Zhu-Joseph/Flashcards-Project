@@ -9,22 +9,7 @@
   */
  const headers = new Headers();
  headers.append("Content-Type", "application/json");
- 
- /**
-  * Removes the `cards` property from the deck so it is not accidentally saved with the deck.
-  *
-  * This function is NOT exported because it is not needed outside of this file.
-  *
-  * @param deck
-  *  the deck instance
-  * @returns {*}
-  *  a copy of the deck instance with the `cards` property removed.
-  */
- function stripCards(deck) {
-   const { cards, ...deckWithoutCards } = deck;
-   return deckWithoutCards;
- }
- 
+  
  /**
   * Fetch `json` from the specified URL and handle error status codes and ignore `AbortError`s
   *
