@@ -37,12 +37,8 @@ export const List = () => {
               <div className="col-md-8">
                 <h5 className="card-title">{deck.name}</h5>
               </div>
-              {/* <div className="col-md-4">
-                <p className="text-end">{`${deck.cards.length} cards`}</p>
-              </div> */}
             </div>
             <p className="card-text">{deck.description}</p>
-
             <Link to={`/decks/${deck.id}`} className="btn btn-secondary mr-2">
               <span className="oi oi-eye" /> View
             </Link>
