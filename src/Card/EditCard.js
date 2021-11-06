@@ -47,7 +47,7 @@ function EditCard() {
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
               <Link to="/">
-                <span className="oi oi-home" /> Home
+                <span className="oi oi-home" />Home
               </Link>
             </li>
             <li className="breadcrumb-item">
