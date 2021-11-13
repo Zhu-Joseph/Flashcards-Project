@@ -36,7 +36,6 @@ export const Deck = () => {
         <div>
           <h5 className="card-title">{deck.name}</h5>
           <p className="card-text">{deck.description}</p>
-
           <Link to={`/decks/${deckId}/edit`} className="btn btn-secondary m-2">
             <span className="oi oi-pencil" /> Edit
           </Link>
