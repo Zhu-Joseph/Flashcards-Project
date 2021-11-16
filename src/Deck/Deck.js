@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useLayoutEffect } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import Card from '../Card/Card';
 import { deleteDeck, readDeck } from '../utils/api';
@@ -8,7 +8,7 @@ export const Deck = () => {
   const history = useHistory();
   const [deck, setDeck] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     readDeck(deckId).then(setDeck);
   }, [deckId, deck]);
 
