@@ -31,7 +31,7 @@ The application begins with the **Dashboard** which holds displays all the decks
 
 
 ### Delete Deck
-
+When you click on the **Delete** button, an alert confirmation window will pop up. This is just to make sure that the user did not misclick anything and confirms the whether or not they would want to delete the deck. 
 
 ![Delete Deck](data/images/Delete_Deck.png)
 
@@ -40,11 +40,16 @@ The application begins with the **Dashboard** which holds displays all the decks
 ![Cards](data/images/Cards.png)
 
 
+### Create Card
+
+![Create Card](data/images/Create_Card.png)
+
+
 ### Edit Card
 
 ![Edit Card](data/images/Edit_Card.png)
 
 
 ### Delete Card
-
+When you click on the **Delete** button, an alert confirmation window will pop up. This is just to make sure that the user did not misclick anything and confirms the whether or not they would want to delete the card. 
 ![Delete Card](data/images/Delete_Card.png)
